@@ -1,0 +1,107 @@
+/* ==========================================
+   彩灯り (Irodori Care) - SP First Stylesheet
+   ========================================== */
+
+/* ==========================================
+   1. Base & Variables
+   ========================================== */
+:root {
+  /* Colors */
+  --c-light-pink: #F6E7EE;
+  --c-off-white: #FBF8F9;
+  --c-pink-beige: #EED9DE;
+  --c-lavender: #E9E1F0;
+  --c-dusky-rose: #C48FA2;
+  --c-mauve: #9D7B8F;
+  --c-text-dark: #4B4453;
+  --c-text-mid: #7E6174;
+  --c-text-light: #FFF8FB;
+  --c-cta: #D7A7B8;
+  --c-cta-hover: #C49AAB;
+  --c-deep: #2F2533;
+
+  /* Spacing (8px grid) */
+  --sp-xs: 8px;
+  --sp-sm: 16px;
+  --sp-md: 24px;
+  --sp-lg: 40px;
+  --sp-xl: 64px;
+  --sp-2xl: 96px;
+
+  /* Layout */
+  --content-px: 24px;
+  --max-content: 640px;
+
+  /* Fonts */
+  --font-mincho: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+  --font-sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --dur-fade: 700ms;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-mincho);
+  color: var(--c-text-dark);
+  background: var(--c-off-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* ==========================================
+   2. Utility
+   ========================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-content);
+  margin-inline: auto;
+  padding-inline: var(--content-px);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+

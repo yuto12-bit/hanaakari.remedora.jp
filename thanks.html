@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>送信完了 | 彩灯り</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet"/>
+<link href="assets/css/base.css" rel="stylesheet"/>
+<link href="assets/css/components.css" rel="stylesheet"/>
+<link href="assets/css/sections.css" rel="stylesheet"/>
+<link href="assets/css/privacy.css" rel="stylesheet"/>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NT072ZRGZ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-NT072ZRGZ3');
+
+  // URLパラメータからフォーム種別を取得してGA4イベントを送信
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var type   = params.get('type');
+    if (type === 'facility') {
+      gtag('event', 'facility_form_submit', {
+        page_path: location.pathname
+      });
+    } else if (type === 'individual') {
+      gtag('event', 'individual_form_submit', {
+        page_path: location.pathname
+      });
+    }
+  })();
+</script>
+</head>
+<body class="page page--thanks">
+
+<!-- ========== Header ========== -->
+<header class="site-header" role="banner">
+<a aria-label="彩灯り トップへ" class="site-header__logo" href="index.html">彩灯り</a>
+<div class="site-header__actions">
+<a class="pill-link--header" href="contact.html">ご相談</a>
+</div>
+</header>
+
+<main>
+<!-- ========== Thanks Hero ========== -->
+<div class="page-header">
+  <h1 class="page-title">送信完了</h1>
+  <p class="page-sub">Thank you</p>
+</div>
+
+<!-- ========== Thanks Body ========== -->
+<section class="section">
+  <div class="document-wrapper" style="text-align: center;">
+    <p style="font-family: var(--font-mincho); font-size: clamp(18px, 5vw, 22px); font-weight: 300; letter-spacing: 0.12em; color: var(--c-text-dark); line-height: 1.8; margin-bottom: 24px;">
+      ご連絡いただき、<br>ありがとうございます。
+    </p>
+    <p style="font-family: var(--font-mincho); font-size: 14px; line-height: 2.1; color: var(--c-text-mid); margin-bottom: 40px;">
+      内容を確認のうえ、折り返しご連絡いたします。<br>
+      返信は営業時間内（平日9:00〜17:00 / 土曜10:00〜15:00）を<br class="pc-only">基本に順次対応しております。<br><br>
+      お急ぎの場合は、LINEからご連絡いただくとスムーズです。
+    </p>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <a class="pill-cta" href="https://chat.line.biz/Uea7caabaea876e6f69f7fde9b84fb55f/chat/2U6c88d57a7ef0c87a5e56146b86e56102?messageId=610021434470957183" target="_blank" rel="noopener noreferrer" data-ga4-event="line_click" data-ga4-cta-location="thanks" data-ga4-cta-text="LINE" data-ga4-page-type="thanks" data-ga4-destination-type="line">LINEで相談する</a>
+      <a class="pill-link--header" href="index.html" style="font-size: 13px; letter-spacing: 0.1em; color: var(--c-text-mid); text-decoration: none; padding: 4px 0; border-bottom: 1px solid var(--c-pink-beige);">← トップへ戻る</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ========== Footer ========== -->
+<footer class="site-footer" role="contentinfo">
+<div class="site-footer__inner">
+<p class="site-footer__logo">彩灯り</p>
+<p class="site-footer__tagline">彩灯り — 福祉美容・介護美容サービス</p>
+<nav aria-label="フッターナビゲーション" class="site-footer__nav">
+<a href="index.html">トップ</a>
+<a href="service.html">サービス</a>
+<a href="company.html">わたしたちについて</a>
+<a href="contact.html">ご相談・ご予約</a>
+<a href="privacy.html">個人情報の取り扱い</a>
+</nav>
+<p class="site-footer__area">対応エリア：西明石・大久保・土山・加古川・東加古川・稲美</p>
+<p class="site-footer__copy">© 2026 彩灯り. All rights reserved.</p>
+</div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/custom-analytics.js"></script>
+</body>
+</html>
