@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>送信完了 | 彩灯り</title>
-<meta name="robots" content="noindex, nofollow"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet"/>
-<link href="assets/css/base.css" rel="stylesheet"/>
-<link href="assets/css/components.css" rel="stylesheet"/>
-<link href="assets/css/sections.css" rel="stylesheet"/>
-<link href="assets/css/privacy.css" rel="stylesheet"/>
-<!-- GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NT072ZRGZ3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-NT072ZRGZ3');
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  // URLパラメータからフォーム種別を取得してGA4イベントを送信
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    var type   = params.get('type');
-    if (type === 'facility') {
-      gtag('event', 'facility_form_submit', {
-        page_path: location.pathname
-      });
-    } else if (type === 'individual') {
-      gtag('event', 'individual_form_submit', {
-        page_path: location.pathname
-      });
-    }
-  })();
-</script>
+  <title>送信完了｜彩灯り</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=20260425-2" sizes="any" />
+  <link rel="shortcut icon" href="/assets/images/favicon.ico?v=20260425-2" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=20260425-2" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=Noto+Serif+JP:wght@300;400&amp;display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/sections.css" />
+  <link rel="stylesheet" href="/assets/css/privacy.css" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NT072ZRGZ3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NT072ZRGZ3');
+
+    // URLパラメータからフォーム種別を取得してGA4イベントを送信
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var type = params.get('type');
+
+      if (type === 'facility') {
+        gtag('event', 'facility_form_submit', {
+          page_path: location.pathname
+        });
+      } else if (type === 'individual') {
+        gtag('event', 'individual_form_submit', {
+          page_path: location.pathname
+        });
+      }
+    })();
+  </script>
 </head>
 <body class="page page--thanks">
 
