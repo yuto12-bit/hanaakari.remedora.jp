@@ -98,5 +98,17 @@
 </footer>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/custom-analytics.js"></script>
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    if (params.get('from') === 'contact') {
+      var btn = document.querySelector('.privacy-back');
+      if (btn) {
+        btn.href        = 'contact.html#form-heading';
+        btn.textContent = '← 入力途中のフォームへ戻る';
+      }
+    }
+  })();
+</script>
 </body>
 </html>

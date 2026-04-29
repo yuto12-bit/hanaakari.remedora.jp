@@ -23,6 +23,90 @@
     }
   }
 
+  /* ── sessionStorage 下書き保存 ── */
+  var DRAFT_KEY = 'hanaakariContactDraftV1';
+
+  function collectFormData(form) {
+    var data = {};
+    form.querySelectorAll('input, select, textarea').forEach(function (el) {
+      if (!el.name || el.name === 'formType') return;
+      if (el.type === 'checkbox') {
+        if (!Array.isArray(data[el.name])) data[el.name] = [];
+        if (el.checked) data[el.name].push(el.value);
+      } else {
+        data[el.name] = el.value;
+      }
+    });
+    return data;
+  }
+
+  function saveDraft() {
+    try {
+      var activeForm = formFacility.hidden ? 'individual' : 'facility';
+      var draft = {
+        activeForm: activeForm,
+        facility:   collectFormData(formFacility),
+        individual: collectFormData(formIndividual)
+      };
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    } catch (_) {}
+  }
+
+  function restoreFormData(form, data) {
+    if (!data) return;
+    form.querySelectorAll('input, select, textarea').forEach(function (el) {
+      if (!el.name || el.name === 'formType') return;
+      var saved = data[el.name];
+      if (saved === undefined) return;
+      if (el.type === 'checkbox') {
+        el.checked = Array.isArray(saved) && saved.indexOf(el.value) !== -1;
+      } else {
+        el.value = saved;
+      }
+    });
+  }
+
+  function restoreDraft() {
+    try {
+      var raw = sessionStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      var draft = JSON.parse(raw);
+
+      restoreFormData(formFacility,   draft.facility);
+      restoreFormData(formIndividual, draft.individual);
+
+      // タブ・表示状態の復元（GA4イベントは発火しない）
+      var target = draft.activeForm || 'facility';
+      toggleBtns.forEach(function (b) {
+        var isActive = b.dataset.form === target;
+        b.classList.toggle('is-active', isActive);
+        b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      formFacility.hidden   = (target !== 'facility');
+      formIndividual.hidden = (target !== 'individual');
+    } catch (_) {}
+  }
+
+  function clearDraft() {
+    try { sessionStorage.removeItem(DRAFT_KEY); } catch (_) {}
+  }
+
+  /* ── debounce ── */
+  function debounce(fn, ms) {
+    var t;
+    return function () {
+      clearTimeout(t);
+      t = setTimeout(fn, ms);
+    };
+  }
+
+  var debouncedSave = debounce(saveDraft, 300);
+
+  function attachDraftListeners(form) {
+    form.addEventListener('input',  debouncedSave);
+    form.addEventListener('change', debouncedSave);
+  }
+
   /* ── フォーム切替タブ ── */
   toggleBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -38,6 +122,7 @@
       [formFacility, formIndividual].forEach(clearErrors);
 
       fireGa4(target === 'facility' ? 'facility_form_open' : 'individual_form_open');
+      saveDraft();
     });
   });
 
@@ -146,6 +231,7 @@
         try {
           var data = JSON.parse(text);
           if (data.status === 'ok') {
+            clearDraft();
             window.location.href = 'thanks.html?type=' + formType;
           } else {
             // GAS 側でエラーが発生した場合（バリデーション失敗等）
@@ -157,6 +243,7 @@
           }
         } catch (_) {
           // JSON パース失敗 → GAS は受け取っているが応答形式が違う場合のみ起こる
+          clearDraft();
           window.location.href = 'thanks.html?type=' + formType;
         }
       })
@@ -172,5 +259,10 @@
 
   attachSubmit(formFacility);
   attachSubmit(formIndividual);
+  attachDraftListeners(formFacility);
+  attachDraftListeners(formIndividual);
+
+  // 下書き復元（ページ読み込み時）
+  restoreDraft();
 
 })();
