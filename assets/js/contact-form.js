@@ -262,6 +262,9 @@
   attachDraftListeners(formFacility);
   attachDraftListeners(formIndividual);
 
+  // ページ離脱直前に必ず保存（debounce が未発火のまま遷移するケース対策）
+  window.addEventListener('beforeunload', saveDraft);
+
   // 下書き復元（ページ読み込み時）
   restoreDraft();
 
