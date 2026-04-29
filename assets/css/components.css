@@ -65,7 +65,7 @@
     0 10px 24px rgba(94, 71, 79, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.48),
     inset 0 -1px 0 rgba(255, 255, 255, 0.10);
-  transition: background 0.3s, color 0.3s, box-shadow 0.3s, border-color 0.3s;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, border-color 0.3s, opacity 0.25s;
 }
 
 .site-header.is-scrolled .pill-link--header {
@@ -145,6 +145,18 @@
 .nav-drawer.is-open {
   opacity: 1;
   pointer-events: all;
+}
+
+/* ナビドロワー開時: "ご相談" を非表示、× ボタンをドロワー背景に合わせた暗色に */
+body:has(.nav-drawer.is-open) .pill-link--header {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body:has(.nav-drawer.is-open) .menu-circle {
+  color: var(--c-mauve);
+  border-color: var(--c-dusky-rose);
+  background: rgba(196, 143, 162, 0.12);
 }
 
 .nav-drawer__list {

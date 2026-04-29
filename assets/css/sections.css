@@ -3634,7 +3634,7 @@ details[open] .accordion-toggle__label--less {
 .hero--visual-first .hero__vertical-copy {
   right: 24px;
   top: auto;
-  bottom: 80px;
+  bottom: 160px;
   transform: none;
   gap: 0;
 }
@@ -3845,7 +3845,7 @@ details[open] .accordion-toggle__label--less {
 
   .hero--visual-first .hero__vertical-copy {
     right: 18px;
-    bottom: 60px;
+    bottom: 104px;
   }
 
   .hero--visual-first .hero__vertical-line {
