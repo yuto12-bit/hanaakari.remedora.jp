@@ -1183,6 +1183,70 @@ details[open] .service-entry__set-toggle-text--open {
   margin-bottom: 0;
 }
 
+.service-note__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 20px;
+  max-width: 520px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.service-note__list-item {
+  font-family: var(--font-mincho);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--c-text-mid);
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.service-note__list-item::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  color: var(--c-mauve);
+}
+
+.service-note__discount {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--c-light-pink);
+  border-radius: 12px;
+  padding: 18px 22px;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.service-note__discount-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-note__discount-list li {
+  font-family: var(--font-mincho);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--c-text-mid);
+  padding-left: 1.4em;
+  position: relative;
+}
+
+.service-note__discount-list li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  font-size: 8px;
+  top: 0.45em;
+  color: var(--c-mauve);
+}
+
 /* ==========================================
    15. Company Page
    ========================================== */
