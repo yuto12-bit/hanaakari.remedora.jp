@@ -389,6 +389,10 @@ body:has(.nav-drawer.is-open) .menu-circle {
   margin-bottom: var(--sp-lg);
 }
 
+.section-heading:has(.section-heading__lead) {
+  margin-bottom: 0;
+}
+
 .section-heading__eyebrow {
   font-family: var(--font-display);
   font-size: 12px;
@@ -422,11 +426,13 @@ body:has(.nav-drawer.is-open) .menu-circle {
 
 .section-heading__lead {
   font-family: var(--font-mincho);
-  font-size: 13.5px;
-  line-height: 2.0;
-  color: var(--c-text-mid);
-  margin-top: 16px;
-  max-width: 74vw;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--c-text-dark);
+  margin-top: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: 0.1em;
 }
 
 /* ==========================================
